@@ -42,8 +42,7 @@ export function shuffle(array) {
  * @returns {Question[]} Valdar spurningar
  */
 export function pickQuestions(questions, count) {
-  /* TODO útfæra */
-  return [];
+  return shuffle([...questions]).slice(0, count);
 }
 
 /**

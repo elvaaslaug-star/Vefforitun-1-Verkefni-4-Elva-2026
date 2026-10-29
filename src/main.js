@@ -2,8 +2,7 @@ import { questions } from "./lib/questions.js";
 import {
   createResults,
   countCorrect,
-  isCorrect,
-  shuffle,
+  pickQuestions,
   updateStats,
 } from "./lib/quiz.js";
 import {
@@ -12,8 +11,6 @@ import {
   showScreen,
   renderResults,
 } from "./lib/ui.js";
-
-/* TODO importa úr hinum skránum */
 
 /** Fasti sem segir til um hversu margar spurningar við sýnum. */
 const NUMBER_OF_QUESTIONS = 4;
@@ -40,8 +37,7 @@ const state = {
  * @returns {void}
  */
 function start() {
-  const shuffled = shuffle([...questions]);
-  state.questions = shuffled.slice(0, NUMBER_OF_QUESTIONS);
+  state.questions = pickQuestions(questions, NUMBER_OF_QUESTIONS);
   state.current = 1;
   state.answers = [];
 
